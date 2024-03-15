@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.first-part {
+  padding-top: 33px;
+  position: absolute;
+  left: 0px;
+  top: 57px;
+  width: 15%;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  background-color: #ffffff; /* Sidebar background color */
+  min-height: 100vh; /* Set min-height to cover the entire viewport */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.second-part {
+  width: 70%;
+  position: absolute;
+  left: 20%;
+  top: 20%;
 }
