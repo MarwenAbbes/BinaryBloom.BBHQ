@@ -1,12 +1,13 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 29px;
   padding: 0;
-  /* display: flex; */
-  /* align-items: center; */
-  justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  margin: 0;
+  color: #676E8A;
+  background: #fff;
 }
 
 .login-container {
@@ -23,24 +24,24 @@ body {
   text-align: center;
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
 }
 
-label {
+.login-form.label {
   margin-bottom: 8px;
   display: block; /* Make labels display as blocks */
 }
 
-input {
+login-form.input {
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button {
+.submit-btn {
   padding: 10px;
   background-color: #3498db;
   color: #fff;
@@ -49,7 +50,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.submit-btn:hover {
   background-color: #2980b9;
 }
 
@@ -59,7 +60,7 @@ button:hover {
   background-color: #e74c3c;
   color: #fff;
   border-radius: 4px;
-  width: 320x;
+  width: 320px;
   max-width: 320px;
   white-space: pre-wrap;
 }

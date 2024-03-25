@@ -1,0 +1,28 @@
+.nav-item {
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+.nav-link {
+    color: #6c6d6f;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.nav-link:hover{
+    color: black;
+}
+
+.nav-link:hover .sidebar-icon {
+    color: #FF204E;
+}
+
+
+.sidebar-icon {
+    margin-right: 15px;
+}
+
+.sidebar-label {
+    margin-left: 10px;
+    color: #6c6d6f;
+}
