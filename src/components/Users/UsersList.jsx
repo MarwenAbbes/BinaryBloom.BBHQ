@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from "react";
-import "./UsersList.css";
-import {fetchUsers} from "./Components/functions";
+import "./users.css";
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import {Link} from "react-router-dom";
 import UserTable from "./Components/UserTable";
+import {User} from "../../Classes/User";
 
 function UsersList() {
     const [users, setUsers] = useState([]);
-
     const [selectedUser, setSelectedUser] = useState(null);
     useEffect(() => {
-        fetchUsers(setUsers);
+        User.fetchData(setUsers);
     }, []);
 
     return (

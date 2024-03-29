@@ -2,7 +2,7 @@ import axios from "axios";
 import {API_URL} from "./GlobalConstents";
 
 
-const Role = {
+export const Role = {
   getAll: async () => {
     try {
       const response = await axios.get(`${API_URL}/roles`);
@@ -40,6 +40,25 @@ const Role = {
       throw error;
     }
   },
+  fetchData: async (setData) => {
+    const _data = await Role.getAll();
+    setData(_data);
+  }
 };
 
-export default Role;
+export class RoleModel {
+  static  FormElements = {
+    name: {
+      formLabel: "Name",
+      name: "name",
+      type: "text",
+    }
+  };
+
+  constructor() {
+    this.id = "";
+    this.name = "";
+  }
+}
+
+

@@ -3,14 +3,15 @@ import Alert from "react-bootstrap/Alert";
 import {Results} from "../../../Classes/GlobalConstents";
 
 function AlertBar({properties}) {
+    const show = properties?.show || false;
     return (
         <Alert
-            show={properties.show}
+            show={show}
             Alert
-            variant={properties.type === Results.FAILURE ? "danger" : "success"}
+            variant={properties?.type === Results.FAILURE ? "danger" : "success"}
             dismissible
         >
-          {properties.type === Results.SUCCESS
+          {properties?.type === Results.SUCCESS
           ? "Operation has been executed  successfully."
           : "An error has occurred. Please check the logs"}
         </Alert>

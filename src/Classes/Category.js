@@ -1,19 +1,19 @@
 import axios from "axios";
 import {API_URL} from "./GlobalConstents";
 
-export const Store = {
-    getAll: async () => {
+
+export const Category = {
+    get: async () => {
         try {
-            const response = await axios.get(`${API_URL}/stores`);
+            const response = await axios.get(`${API_URL}/categories`);
             return response.data;
         } catch (error) {
             throw error;
         }
     },
-
-    add: async (storeData) => {
+    add: async (roleData) => {
         try {
-            const response = await axios.post(`${API_URL}/stores`, storeData, {
+            const response = await axios.post(`${API_URL}/categories`, roleData, {
                 headers: {
                     "Access-Control-Allow-Origin": "*", // CORS header
                     "Content-Type": "application/json", // Content-Type header
@@ -24,35 +24,29 @@ export const Store = {
             throw error;
         }
     },
-    remove: async (storeId) => {
+    update: async (roleData) => {
         try {
-            const response = await axios.delete(`${API_URL}/stores/${storeId}`);
+            const response = await axios.put(`${API_URL}/categories`, roleData);
             return response.data;
         } catch (error) {
             throw error;
         }
     },
-    update: async (storeData) => {
+    remove: async (categoryId) => {
         try {
-            const response = await axios.put(`${API_URL}/stores`, storeData,
-                {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // CORS header
-                        "Content-Type": "application/json", // Content-Type header
-                    },
-                });
+            const response = await axios.delete(`${API_URL}/categories/${categoryId}`);
             return response.data;
         } catch (error) {
             throw error;
         }
     },
     fetchData: async (setData) => {
-        const _data = await Store.getAll();
+        const _data = await Category.get();
         setData(_data);
     }
 };
 
-export class StoreModel {
+export class CategoryModel {
     static  FormElements = {
         name: {
             formLabel: "Name",
@@ -61,13 +55,20 @@ export class StoreModel {
             required: true,
             placeholder:" Enter Name"
         },
-        address: {
-            formLabel: "Address",
-            name: "address",
+        description: {
+            formLabel: "Description",
+            name: "description",
+            type: "text",
+            required: false,
+            placeholder:" Enter description"
+        },
+        code: {
+            formLabel: "Code",
+            name: "code",
             type: "text",
             required: true,
-            placeholder:" Enter address"
-        }
+            placeholder:" Enter code"
+        },
     };
 
     static TableColumns={
@@ -75,16 +76,21 @@ export class StoreModel {
             header:"Name",
             elementValueName:"name"
         },
-        address:{
-            header:"Address",
-            elementValueName:"address"
+        description:{
+            header:"Description",
+            elementValueName:"description"
+        },
+        code:{
+            header:"Code",
+            elementValueName:"code"
         },
     }
 
     constructor() {
         this.id = "";
         this.name = "";
-        this.address = "";
-        this.status = "A";
+        this.description="";
+        this.code = "";
+        this.status = "";
     }
 }

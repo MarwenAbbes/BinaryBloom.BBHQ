@@ -8,10 +8,17 @@ import HomePage from "./Pages/home-page/homePage";
 import LoginPage from "./Pages/login-page/loginPage";
 import _404Page from "./Pages/404-page/404Page";
 import SideBarComponenet from "./components/SideBar/SideBarComponenet/SideBarComponenet";
-import {SettingsPage} from "./Pages/stores-page/SettingsPage";
-import {CategoriesPage} from "./Pages/categories-page/CategoriesPage";
 import {UserDetails} from "./components/Users/Components/UserDetails";
 import UsersList from "./components/Users/UsersList";
+import {StoreComponent} from "./components/codification/StoreComponent";
+import {Operation} from "./Classes/GlobalConstents";
+import {RoleComponent} from "./components/codification/RoleComponent";
+import {CompanyInfoComponent} from "./components/codification/CompanyInfo/CompanyInfoComponent";
+import {CategoryComponent} from "./components/codification/CategoryComponent";
+import {SupplierComponent} from "./components/codification/Suppliers/SupplierComponent";
+import {SupplierDetails} from "./components/codification/Suppliers/Components/SupplierDetails";
+import {ProductComponent} from "./components/Products/ProductComponent";
+import {ProductDetails} from "./components/Products/Components/ProductDetails";
 
 function App() {
     return (
@@ -36,12 +43,22 @@ function App() {
                         <div className="row">
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
+
+                        <Route path="products" element={<ProductComponent/>}/>
+                        <Route path="products/add" element={<ProductDetails operation={"add"}/>}/>
+                        {/*-----------------------Peoples-------------------------------------------*/}
                         <Route path="users" element={<UsersList/>}/>
                         <Route path="users/add" element={<UserDetails operation={"add"}/>}/>
-                        <Route path="users/edit" element={<UserDetails operation={"edit"}/>}/>
+                        <Route path="suppliers" element={<SupplierComponent/>}/>
+                        <Route path="suppliers/add" element={<SupplierDetails operation={"add"}/>}/>
+                        {/*----------------------------------------------------------------------------*/}
                         <Route path="login" element={<LoginPage/>}/>
-                        <Route path="settings" element={<SettingsPage/>}/>
-                        <Route path="categories" element={<CategoriesPage/>}/>
+                        <Route path="categories" element={<CategoryComponent/>}/>
+                        <Route path="settings/stores" element={<StoreComponent/>}/>
+                        <Route path="settings/stores/add" element={<StoreComponent operation={Operation.Add}/>}/>
+                        <Route path="settings/roles" element={<RoleComponent/>}/>
+                        <Route path="settings/companyInfo" element={<CompanyInfoComponent/>}/>
+
                         <Route path="*" element={<_404Page/>}/>
                     </Routes>
                         </div>

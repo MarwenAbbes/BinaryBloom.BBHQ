@@ -19,7 +19,15 @@ export class NavBarLinks {
             to: "#",
             text: "Products",
             icon: ShoppingCartOutlinedIcon,
-            subElements: {}
+            subElements: {
+                Suppliers: {
+                    to: "products",
+                    text: "Products",
+                },
+                AddSuppliers: {
+                    to: "products/add",
+                    text: "Add Product",
+                },}
         },
         Categories: {
             to: "categories",
@@ -50,7 +58,7 @@ export class NavBarLinks {
                 },
                 AddCustomers: {
                     to: "#",
-                    text: "Add Customers",
+                    text: "Add Customer",
                 },
                 Users: {
                     to: "users",
@@ -58,15 +66,15 @@ export class NavBarLinks {
                 },
                 AddUsers: {
                     to: "users/add",
-                    text: "Add Users",
+                    text: "Add User",
                 },
                 Suppliers: {
-                    to: "#",
+                    to: "suppliers",
                     text: "Suppliers",
                 },
                 AddSuppliers: {
-                    to: "#",
-                    text: "Add Suppliers",
+                    to: "suppliers/add",
+                    text: "Add Supplier",
                 },
             }
         },
@@ -77,10 +85,23 @@ export class NavBarLinks {
             subElements: {}
         },
         Settings: {
-            to: "settings",
+            to: "#",
             text: "Settings",
             icon: SettingsOutlinedIcon,
-            subElements: {}
+            subElements: {
+                Stores: {
+                    to: "settings/stores",
+                    text: "Stores",
+                },
+                Roles: {
+                    to: "settings/roles",
+                    text: "Roles",
+                },
+                CompanyInfo: {
+                    to: "settings/companyInfo",
+                    text: "Company",
+                },
+            }
         },
 
     };

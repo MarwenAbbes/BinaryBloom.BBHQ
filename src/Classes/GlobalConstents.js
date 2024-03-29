@@ -11,7 +11,8 @@ export const UserStatus = ["Active", "Inactive"];
 export const Operation = {
     Delete: 'D',
     Edit: 'E',
-    Show: 'S'
+    Show: 'S',
+    Add:'A'
 
 };
 

@@ -24,11 +24,11 @@ export function DisplaySuccess(alert, setAlert) {
         show: true,
     }))
     window.setTimeout(() => {
-        // setAlert(alert => ({
-        //     ...alert,
-        //     show: false,
-        // }))
-    }, 2000);
+        setAlert(alert => ({
+            ...alert,
+            show: false,
+        }))
+    }, 3000);
 }
 
 export function DisplayError(alert, setAlert, error) {
@@ -43,7 +43,7 @@ export function DisplayError(alert, setAlert, error) {
             ...alert,
             show: false,
         }))
-    }, 2000);
+    }, 3000);
 }
 
 export function handleInputChange(e, setFormData, formData) {
@@ -52,5 +52,9 @@ export function handleInputChange(e, setFormData, formData) {
         ...formData,
         [name]: value,
     });
-};
+}
+
+export function findElementById(array, id) {
+    return array.find(item => item.id === id);
+}
 

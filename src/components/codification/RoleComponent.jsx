@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import {Operation} from "../../Classes/GlobalConstents";
 import {AlertModel} from "../../Models/AlertModel";
 import {Button} from "react-bootstrap";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import AlertBar from "../Utilities/AlertBar/AlertBar";
-import {Category, CategoryModel} from "../../Classes/Category";
+import {Role, RoleModel} from "../../Classes/Role";
 import {ElementTable} from "../Utilities/ElementTable";
 
-export function CategoryComponent() {
+export function RoleComponent() {
     const [data, setData] = useState([]);
     const [selectedObject, setSelectedObject] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -15,8 +15,9 @@ export function CategoryComponent() {
     const [alert, setAlert] = useState(new AlertModel());
 
     useEffect(() => {
-        Category.fetchData(setData);
+        Role.fetchData(setData);
     }, []);
+
 
 
     return (
@@ -29,7 +30,7 @@ export function CategoryComponent() {
                                  setShowModal(true);
                              }}>
                         <AddCircleOutlineOutlinedIcon/>
-                        Add category
+                        Add role
                     </Button>
                 </div>
 
@@ -39,7 +40,6 @@ export function CategoryComponent() {
                     <AlertBar properties={alert}/>
                 </div>
             }
-
             <div className="col-lg-12">
                 <ElementTable
                     _data={data}
@@ -51,11 +51,13 @@ export function CategoryComponent() {
                     operation={operation}
                     alert={alert}
                     setAlert={setAlert}
-                    object={Category}
-                    model={CategoryModel}
-                    elementName={"category"}
+                    object={Role}
+                    model={RoleModel}
+                    elementName={"role"}
                 />
             </div>
+
+
         </>
-    );
+    )
 }

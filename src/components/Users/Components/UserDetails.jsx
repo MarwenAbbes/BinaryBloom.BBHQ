@@ -1,15 +1,15 @@
 import {Form} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
-import {UserModel} from "../../../Models/UserModel";
 import "../users.css"
-import {fetchRoles, fetchStores} from "./functions";
-import {Genders, Operation, Results, UserStatus} from "../../../Classes/GlobalConstents";
-import User from "../../../Classes/User";
+import {Genders, Operation, UserStatus} from "../../../Classes/GlobalConstents";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import AlertBar from "../../Utilities/AlertBar/AlertBar";
 import {AlertModel} from "../../../Models/AlertModel";
 import {DisplayError, DisplaySuccess} from "../../../Classes/utils";
+import {User, UserModel} from "../../../Classes/User";
+import {Store} from "../../../Classes/Store";
+import {Role} from "../../../Classes/Role";
 
 export function UserDetails({operation, userData}) {
     const [formData, setFormData] = useState(new UserModel());
@@ -21,14 +21,10 @@ export function UserDetails({operation, userData}) {
     const [alert, setAlert] = useState(new AlertModel());
 
     useEffect(() => {
-        fetchStores(setStores);
-        fetchRoles(setRoles);
+        Store.fetchData(setStores);
+        Role.fetchData(setRoles);
         setReadOnly(operation === Operation.Show);
         if (operation === Operation.Edit || operation === Operation.Show) {
-            var todayDate = new Date(userData.birthDay);
-            const formatDate = todayDate.getDate() < 10 ? `0${todayDate.getDate()}` : todayDate.getDate();
-            const formatMonth = todayDate.getMonth() < 10 ? `0${todayDate.getMonth()}` : todayDate.getMonth();
-            const formattedDate = [todayDate.getFullYear(), formatMonth, formatDate].join('-');
             setFormData(
                 {
                     id: userData.id,
@@ -73,10 +69,12 @@ export function UserDetails({operation, userData}) {
             } else {
                 await User.addUser(formData).then(() => {
                     console.log("success")
+                    DisplaySuccess(alert, setAlert);
                 }).catch((e) => {
                     console.log(e)
+                    DisplayError(alert, setAlert, e);
                 })
-                DisplaySuccess(alert, setAlert);
+
             }
         } catch (e) {
             DisplayError(alert, setAlert, e);
@@ -84,13 +82,11 @@ export function UserDetails({operation, userData}) {
     }
     return (
         <div className="card">
-
             {alert.show &&
                 <div className="alert-panel">
                     <AlertBar properties={alert}/>
                 </div>
                 }
-
             {operation === "" && <div className="card-header d-flex justify-content-between">
                 <div className="header-title">
                     <h4 className="card-title">Add User</h4>

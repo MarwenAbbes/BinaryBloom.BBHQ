@@ -1,21 +1,20 @@
 import React, {useEffect, useState} from "react";
+import {Store, StoreModel} from "../../Classes/Store";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import {Button} from "react-bootstrap";
 import {Operation} from "../../Classes/GlobalConstents";
 import {AlertModel} from "../../Models/AlertModel";
-import {Button} from "react-bootstrap";
 import AlertBar from "../Utilities/AlertBar/AlertBar";
-import {Category, CategoryModel} from "../../Classes/Category";
 import {ElementTable} from "../Utilities/ElementTable";
 
-export function CategoryComponent() {
+export function StoreComponent() {
     const [data, setData] = useState([]);
     const [selectedObject, setSelectedObject] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [operation, setOperation] = useState(Operation.Add);
     const [alert, setAlert] = useState(new AlertModel());
-
     useEffect(() => {
-        Category.fetchData(setData);
+        Store.fetchData(setData);
     }, []);
 
 
@@ -25,11 +24,11 @@ export function CategoryComponent() {
                 <div className="d-flex flex-wrap align-items-center justify-content-between mb-4">
                     <p></p>
                     <Button  className="btn btn-primary add-list"
-                             onClick={()=>{
-                                 setShowModal(true);
-                             }}>
+                    onClick={()=>{
+                        setShowModal(true);
+                    }}>
                         <AddCircleOutlineOutlinedIcon/>
-                        Add category
+                        Add store
                     </Button>
                 </div>
 
@@ -39,7 +38,6 @@ export function CategoryComponent() {
                     <AlertBar properties={alert}/>
                 </div>
             }
-
             <div className="col-lg-12">
                 <ElementTable
                     _data={data}
@@ -51,11 +49,13 @@ export function CategoryComponent() {
                     operation={operation}
                     alert={alert}
                     setAlert={setAlert}
-                    object={Category}
-                    model={CategoryModel}
-                    elementName={"category"}
+                    object={Store}
+                    model={StoreModel}
+                    elementName={"store"}
                 />
             </div>
+
+
         </>
-    );
+    )
 }
