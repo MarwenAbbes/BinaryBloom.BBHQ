@@ -1,5 +1,6 @@
 import axios from "axios";
 import {API_URL} from "./GlobalConstents";
+import async from "async";
 
 const prefix = 'products';
 export const Product = {
@@ -43,6 +44,17 @@ export const Product = {
     fetchData: async (setData) => {
         const _data = await Product.get();
         setData(_data);
+    },
+    search: async (query)=>{
+        const SearchElement = {
+            query:query
+        };
+        try {
+            const response = await axios.put(`${API_URL}/${prefix}/search`, SearchElement);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
     }
 };
 
@@ -96,8 +108,5 @@ export class ProductModel {
         this.status = "";
         this.createdAt = "";
         this.updatedAt = "";
-
-
-
     }
 }

@@ -4,7 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import "@fontsource/inter";
-import HomePage from "./Pages/home-page/homePage";
+import NavBar from "./components/navbar/NavBar";
 import LoginPage from "./Pages/login-page/loginPage";
 import _404Page from "./Pages/404-page/404Page";
 import SideBarComponenet from "./components/SideBar/SideBarComponenet/SideBarComponenet";
@@ -19,6 +19,9 @@ import {SupplierComponent} from "./components/codification/Suppliers/SupplierCom
 import {SupplierDetails} from "./components/codification/Suppliers/Components/SupplierDetails";
 import {ProductComponent} from "./components/Products/ProductComponent";
 import {ProductDetails} from "./components/Products/Components/ProductDetails";
+import {HomePage} from "./components/HomePage/HomePage";
+import {CustomerComponent} from "./components/codification/Customers/CustomerComponent";
+import {CustomerDetails} from "./components/codification/Customers/CustomerDetails";
 
 function App() {
     return (
@@ -29,7 +32,7 @@ function App() {
                     !window.location.pathname.includes("/404") && (
                         <div>
                             <div className="iq-top-navbar">
-                                <HomePage/>
+                                <NavBar/>
                             </div>
 
                             <div className="iq-sidebar">
@@ -47,6 +50,8 @@ function App() {
                         <Route path="products" element={<ProductComponent/>}/>
                         <Route path="products/add" element={<ProductDetails operation={"add"}/>}/>
                         {/*-----------------------Peoples-------------------------------------------*/}
+                        <Route path="customers" element={<CustomerComponent/>}/>
+                        <Route path="customers/add" element={<CustomerDetails operation={"add"}/>}/>
                         <Route path="users" element={<UsersList/>}/>
                         <Route path="users/add" element={<UserDetails operation={"add"}/>}/>
                         <Route path="suppliers" element={<SupplierComponent/>}/>

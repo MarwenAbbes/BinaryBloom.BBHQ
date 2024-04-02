@@ -1,0 +1,30 @@
+.dropdown-content {
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    align-content: center;
+    position: absolute;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    width: 79%;
+    height: fit-content;
+}
+
+.col-md-12.col-search {
+    position: relative;
+}
+
+.dropdown-content a{
+    color: black !important;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.dropdown-content a:hover{
+    background-color: #dedede;
+}
+
+.col-md-10.col-sub-search{
+    padding-left: 0 !important;
+}

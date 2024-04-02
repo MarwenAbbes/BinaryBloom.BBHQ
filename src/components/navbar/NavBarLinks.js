@@ -53,11 +53,11 @@ export class NavBarLinks {
             icon: ManageAccountsOutlinedIcon,
             subElements: {
                 Customers: {
-                    to: "#",
+                    to: "customers",
                     text: "Customers",
                 },
                 AddCustomers: {
-                    to: "#",
+                    to: "customers/add",
                     text: "Add Customer",
                 },
                 Users: {
